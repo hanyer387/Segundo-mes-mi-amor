@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Para ti, Fernanda</title>
+<meta name="theme-color" content="#FFF0F5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- BODY:START -->
+<!-- Moño reutilizable: se usa con <use href="#bow"> -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <symbol id="bow" viewBox="0 0 120 88">
+    <path d="M55 32 C40 2 8 8 10 26 C12 46 42 52 55 40 Z"></path>
+    <path d="M65 32 C80 2 112 8 110 26 C108 46 78 52 65 40 Z"></path>
+    <path d="M56 40 C52 56 46 70 37 84 C48 76 57 62 60 46 Z"></path>
+    <path d="M64 40 C68 56 74 70 83 84 C72 76 63 62 60 46 Z"></path>
+    <ellipse cx="60" cy="36" rx="8.5" ry="9.5" fill="#E8455F"></ellipse>
+  </symbol>
+  <!-- versión sin colas: se lee mejor en tamaño pequeño -->
+  <symbol id="bowMini" viewBox="0 0 120 56">
+    <path d="M55 22 C40 -4 8 2 10 18 C12 38 42 44 55 30 Z"></path>
+    <path d="M65 22 C80 -4 112 2 110 18 C108 38 78 44 65 30 Z"></path>
+    <ellipse cx="60" cy="26" rx="9.5" ry="10.5" fill="#E8455F"></ellipse>
+  </symbol>
+</svg>
+
+<!-- ===================== PANTALLA DE BLOQUEO ===================== -->
+<div class="lock" id="lock">
+
+  <div class="lock__pattern" aria-hidden="true"></div>
+
+  <div class="petals" aria-hidden="true">
+    <span class="petal" style="--x:6%;  --s:.75; --t:19s; --d:-3s"></span>
+    <span class="petal" style="--x:17%; --s:1.1; --t:24s; --d:-11s"></span>
+    <span class="petal" style="--x:29%; --s:.6;  --t:16s; --d:-7s"></span>
+    <span class="petal" style="--x:41%; --s:.95; --t:27s; --d:-18s"></span>
+    <span class="petal" style="--x:56%; --s:.7;  --t:21s; --d:-2s"></span>
+    <span class="petal" style="--x:68%; --s:1.2; --t:25s; --d:-14s"></span>
+    <span class="petal" style="--x:79%; --s:.65; --t:18s; --d:-9s"></span>
+    <span class="petal" style="--x:88%; --s:1;   --t:23s; --d:-5s"></span>
+    <span class="petal" style="--x:95%; --s:.8;  --t:20s; --d:-16s"></span>
+  </div>
+
+  <div class="lock__inner">
+
+    <p class="eyebrow">segundo mes</p>
+
+    <h1 class="lock__title">Para ti, mi amor</h1>
+
+    <button class="medallion" id="heart" type="button"
+            aria-label="Mantén presionado el corazón durante tres segundos para entrar">
+
+      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="ring__track" cx="50" cy="50" r="46"></circle>
+        <circle class="ring__bar" id="ringBar" cx="50" cy="50" r="46"></circle>
+      </svg>
+
+      <svg class="heart" viewBox="0 0 120 124" aria-hidden="true">
+        <defs>
+          <clipPath id="heartClip">
+            <path d="M60 110 C30 88 14 70 14 54 C14 38 26 28 40 28 C50 28 57 34 60 40 C63 34 70 28 80 28 C94 28 106 38 106 54 C106 70 90 88 60 110 Z"></path>
+          </clipPath>
+          <linearGradient id="fillGrad" x1="0" y1="110" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#D94F7D"></stop>
+            <stop offset=".55" stop-color="#FF8FAB"></stop>
+            <stop offset="1" stop-color="#FFC9D6"></stop>
+          </linearGradient>
+        </defs>
+
+        <path class="heart__base" d="M60 110 C30 88 14 70 14 54 C14 38 26 28 40 28 C50 28 57 34 60 40 C63 34 70 28 80 28 C94 28 106 38 106 54 C106 70 90 88 60 110 Z"></path>
+
+        <g clip-path="url(#heartClip)">
+          <rect id="fillRect" x="0" y="110" width="120" height="0" fill="url(#fillGrad)"></rect>
+          <rect id="scanLine" x="0" y="110" width="120" height="2.6" fill="#FFF3C4" opacity="0"></rect>
+        </g>
+
+        <path class="heart__outline" d="M60 110 C30 88 14 70 14 54 C14 38 26 28 40 28 C50 28 57 34 60 40 C63 34 70 28 80 28 C94 28 106 38 106 54 C106 70 90 88 60 110 Z"></path>
+
+        <g class="shine">
+          <ellipse cx="37" cy="54" rx="6.5" ry="10.5" transform="rotate(-26 37 54)"></ellipse>
+        </g>
+
+        <g class="bow">
+          <path d="M56 34 C44 20 27 18 25 28.5 C23 39 44 41 56 39 Z"></path>
+          <path d="M64 34 C76 20 93 18 95 28.5 C97 39 76 41 64 39 Z"></path>
+          <circle cx="60" cy="34" r="6.6"></circle>
+        </g>
+      </svg>
+
+      <span class="burst" aria-hidden="true"></span>
+    </button>
+
+    <div class="status">
+      <p class="hint" id="hint">Mantén presionado el corazón</p>
+      <p class="welcome" id="welcome" aria-live="polite"></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== PÁGINA PRINCIPAL ===================== -->
+<main class="page" id="main" tabindex="-1" aria-hidden="true">
+
+  <div class="page__pattern" aria-hidden="true"></div>
+
+  <!-- ---------- 1. Contador ---------- -->
+  <section class="counter" id="counter">
+
+    <p class="eyebrow">nuestro tiempo juntos</p>
+
+    <h2 class="section-title">Fernanda y Yo</h2>
+
+    <p class="section-sub">Feliz mes, mi amor</p>
+
+    <div class="clock" id="clock" role="timer" aria-live="off">
+      <div class="unit">
+        <span class="unit__num" id="uDays">0</span>
+        <span class="unit__label">Días</span>
+      </div>
+      <div class="unit">
+        <span class="unit__num" id="uHours">00</span>
+        <span class="unit__label">Horas</span>
+      </div>
+      <div class="unit">
+        <span class="unit__num" id="uMins">00</span>
+        <span class="unit__label">Minutos</span>
+      </div>
+      <div class="unit unit--sec">
+        <span class="unit__num" id="uSecs">00</span>
+        <span class="unit__label">Segundos</span>
+      </div>
+    </div>
+
+    <p class="clock__since">desde el <span id="sinceDate">12 de julio de 2026</span></p>
+
+  </section>
+
+  <!-- ---------- 2. Dedicatoria ---------- -->
+  <section class="letter">
+    <article class="card-letter">
+
+      <svg class="card-letter__bow" viewBox="0 0 120 88" aria-hidden="true">
+        <use href="#bow"></use>
+      </svg>
+
+      <h3 class="card-letter__title">Lo que quiero decirte</h3>
+
+      <!-- TEXTO DE PRUEBA — reemplázalo por tu dedicatoria real -->
+      <div class="card-letter__body">
+        <p>
+          Hay dias que de verdad no sé cómo llegamos a estar juntos, y otros que me parece que siempre fue así. Que siempre te conocí, que siempre te quise. Que siempre supe que eras tú.
+        </p>
+        <p>
+          Me gusta cómo te ríes de tus propios chistes antes de terminarlos.
+          Me gusta que me cuentes las cosas dos veces porque se te olvida que ya
+          me las contaste. Me gusta la manera tan tuya que tienes de estar, esa
+          que hace que cualquier lugar se sienta menos frío.
+        </p>
+        <p>
+          Dos meses no son mucho si los cuentas en el calendario, pero son
+          enormes si los cuentas en todo lo que aprendí a querer de ti. Y lo
+          mejor es que esto apenas está empezando: quedan muchísimos días por
+          contar juntos.  
+        </p>
+      </div>
+
+      <p class="card-letter__sign">Tuyo, siempre</p>
+
+    </article>
+  </section>
+
+
+  <div class="bow-divider" aria-hidden="true">
+    <span></span>
+    <svg viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+    <span></span>
+  </div>
+
+  <!-- ---------- 3. Memorias ---------- -->
+  <section class="memories">
+
+    <header class="sec-head">
+      <p class="eyebrow">nuestras fotos</p>
+      <h2 class="section-title section-title--sub">Memorias</h2>
+      <p class="sec-head__note">seis momentos que no quiero que se me olviden</p>
+    </header>
+
+    <!--
+      FOTOS: reemplaza cada archivo de la carpeta "fotos" por el tuyo
+      manteniendo el mismo nombre (foto-1.jpg … foto-6.jpg) y listo.
+      Si usas otro nombre o formato, cambia el src y el alt de cada <img>.
+      Salen mejor las fotos cuadradas o recortadas al centro.
+    -->
+    <div class="polaroids">
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-1.jpg" alt="Foto de ejemplo: La primera vez" loading="lazy">
+        </div>
+        <figcaption>Foto de mi hermosa novia jiji</figcaption>
+      </figure>
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-2.jpg" alt="Foto de ejemplo: Aquella tarde" loading="lazy">
+        </div>
+        <figcaption>Nuestra Zoe</figcaption>
+      </figure>
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-3.jpg" alt="Foto de ejemplo: Tú y tu café" loading="lazy">
+        </div>
+        <figcaption>Tu y mis shorts</figcaption>
+      </figure>
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-4.jpg" alt="Foto de ejemplo: El día del parque" loading="lazy">
+        </div>
+        <figcaption>Nosotros juntitos</figcaption>
+      </figure>
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-5.jpg" alt="Foto de ejemplo: Nuestra canción" loading="lazy">
+        </div>
+        <figcaption>De nuevo nosotros jsjs</figcaption>
+      </figure>
+
+      <figure class="polaroid">
+        <div class="polaroid__frame">
+          <img src="fotos/foto-6.jpg" alt="Foto de ejemplo: Sin motivo, solo felices" loading="lazy">
+        </div>
+        <figcaption>Cuando nos quisimos hacer los tik tokers</figcaption>
+      </figure>
+
+    </div>
+
+    <p class="polaroids__hint">desliza para ver las demás &rarr;</p>
+
+  </section>
+
+  <!-- ---------- 4. Nuestra historia ---------- -->
+  <section class="history">
+
+    <header class="sec-head">
+      <p class="eyebrow">nuestra historia</p>
+      <h2 class="section-title section-title--sub">Cómo llegamos aquí</h2>
+      <p class="sec-head__note">en orden, aunque se sienta todo junto</p>
+    </header>
+
+    <!-- HITOS DE PRUEBA — cambia fechas, títulos y descripciones -->
+    <ol class="timeline">
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true">
+          <svg class="bow-icon" viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+        </span>
+        <article class="tl-card">
+          <p class="tl-date">Julio 2026</p>
+          <h3 class="tl-title">El mes que tome la gran decision</h3>
+          <p class="tl-text">
+            Estaba tan nervioso que no podia mirarte.
+          </p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true">
+          <svg class="bow-icon" viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+        </span>
+        <article class="tl-card">
+          <p class="tl-date">Julio 2026</p>
+          <h3 class="tl-title">Nuestros primeros dias</h3>
+          <p class="tl-text">
+            Aun no me creia que estabamos juntos.
+          </p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true">
+          <svg class="bow-icon" viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+        </span>
+        <article class="tl-card">
+          <p class="tl-date">Agosto 2026</p>
+          <h3 class="tl-title">Nuestro primer mes</h3>
+          <p class="tl-text">
+            Ese mes nunca lo olvidare, es muy importante para mi, porque fue el mes que me di cuenta que te quiero para toda la vida.
+          </p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true">
+          <svg class="bow-icon" viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+        </span>
+        <article class="tl-card">
+          <p class="tl-date">Agosto 2026</p>
+          <h3 class="tl-title">La canción que se volvió nuestra</h3>
+          <p class="tl-text">
+            Descubri una cancion que no dejo de pensar en ti cuando la escucho. Ya la escucharas espera
+          </p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true">
+          <svg class="bow-icon" viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+        </span>
+        <article class="tl-card">
+          <p class="tl-date">Septiembre 2026</p>
+          <h3 class="tl-title">Dos meses contigo</h3>
+          <p class="tl-text">
+            Y esta página, que llevo días armando en secreto para llegar hasta aquí.
+          </p>
+        </article>
+      </li>
+
+    </ol>
+  </section>
+
+
+  <div class="bow-divider" aria-hidden="true">
+    <span></span>
+    <svg viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+    <span></span>
+  </div>
+
+  <!-- ---------- 5. Una carta ---------- -->
+  <section class="letter-section">
+
+    <header class="sec-head">
+      <p class="eyebrow">una carta</p>
+      <h2 class="section-title section-title--sub">Te escribí algo</h2>
+      <p class="sec-head__note">esto sí quería decírtelo con calma</p>
+    </header>
+
+    <button class="envelope" id="envelope" type="button"
+            aria-haspopup="dialog" aria-label="Toca el sobre para abrir la carta">
+
+      <span class="env__back" aria-hidden="true"></span>
+
+      <!-- la hoja que se asoma al abrir -->
+      <span class="env__paper" aria-hidden="true">
+        <span class="env__line"></span>
+        <span class="env__line"></span>
+        <span class="env__line"></span>
+        <span class="env__line env__line--short"></span>
+      </span>
+
+      <!-- bolsillo delantero con el doblez en V -->
+      <span class="env__front" aria-hidden="true"></span>
+
+      <!-- solapa que se abre hacia arriba -->
+      <span class="env__flap" aria-hidden="true"></span>
+
+      <!-- sello de cera con un corazón -->
+      <span class="env__seal" aria-hidden="true">
+        <svg viewBox="0 0 24 22"><path d="M12 20 C5 14.6 2 11 2 7.6 C2 4.4 4.4 2 7.4 2 C9.4 2 11.2 3.2 12 4.8 C12.8 3.2 14.6 2 16.6 2 C19.6 2 22 4.4 22 7.6 C22 11 19 14.6 12 20 Z"></path></svg>
+      </span>
+
+    </button>
+
+    <p class="env__hint" id="envHint">Toca el sobre para abrir</p>
+
+  </section>
+
+  <!-- ---------- 6. Nuestra canción ---------- -->
+  <section class="music">
+
+    <header class="sec-head">
+      <p class="eyebrow">nuestra canción</p>
+      <h2 class="section-title section-title--sub">Ponle play</h2>
+      <p class="sec-head__note">sube el volumen, esta parte es importante</p>
+    </header>
+
+    <div class="player" id="player">
+
+      <div class="disc" id="disc">
+        <img class="disc__art" src="fotos/portada.jpg" alt="Portada de la canción" loading="lazy">
+        <span class="disc__grooves" aria-hidden="true"></span>
+        <span class="disc__hole" aria-hidden="true"></span>
+      </div>
+
+      <div class="player__info">
+        <!-- CAMBIA el título, el artista y la ruta del audio de abajo -->
+        <p class="player__eyebrow">suena ahora</p>
+        <h3 class="player__song">Melodía de prueba</h3>
+        <p class="player__artist">cámbiala por nuestra canción</p>
+
+        <div class="player__bar">
+          <button class="play" id="playBtn" type="button" aria-label="Reproducir">
+            <svg class="play__icon play__icon--play" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5.2 L19 12 L8 18.8 Z"></path>
+            </svg>
+            <svg class="play__icon play__icon--pause" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7.5" y="5.5" width="3.6" height="13" rx="1.6"></rect>
+              <rect x="12.9" y="5.5" width="3.6" height="13" rx="1.6"></rect>
+            </svg>
+          </button>
+
+          <div class="track">
+            <input class="track__range" id="seek" type="range" min="0" max="1000" value="0"
+                   step="1" aria-label="Avanzar en la canción">
+            <div class="track__times">
+              <span id="tNow">0:00</span>
+              <span id="tEnd">0:00</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="player__status" id="audioStatus" role="status"></p>
+      </div>
+
+      <!--
+        AUDIO: guarda tu canción en la carpeta "musica" y pon su nombre aquí.
+        Ejemplo: src="musica/nuestra-cancion.mp3"
+      -->
+      <audio id="audio" src="musica/demo.mp3" preload="metadata"></audio>
+
+    </div>
+  </section>
+
+  <div class="bow-divider" aria-hidden="true">
+    <span></span>
+    <svg viewBox="0 0 120 56"><use href="#bowMini"></use></svg>
+    <span></span>
+  </div>
+
+  <!-- ---------- 7. Frasco de razones ---------- -->
+  <section class="reasons">
+
+    <header class="sec-head">
+      <p class="eyebrow">por si se te olvida</p>
+      <h2 class="section-title section-title--sub">Razones</h2>
+      <p class="sec-head__note">toca el frasco y sale una</p>
+    </header>
+
+    <div class="jar-wrap">
+
+      <button class="jar" id="jar" type="button" aria-label="Sacar una razón del frasco">
+        <svg class="jar__bow" viewBox="0 0 120 56" aria-hidden="true"><use href="#bowMini"></use></svg>
+        <span class="jar__lid" aria-hidden="true"></span>
+        <span class="jar__glass" aria-hidden="true">
+          <span class="jar__shine"></span>
+          <span class="jar__slips">
+            <i style="--l:6%;  --b:3%;  --r:-16deg"></i>
+            <i style="--l:34%; --b:2%;  --r:8deg"></i>
+            <i style="--l:60%; --b:4%;  --r:-6deg"></i>
+            <i style="--l:16%; --b:15%; --r:12deg"></i>
+            <i style="--l:46%; --b:16%; --r:-11deg"></i>
+            <i style="--l:8%;  --b:28%; --r:5deg"></i>
+            <i style="--l:40%; --b:30%; --r:-14deg"></i>
+            <i style="--l:62%; --b:27%; --r:10deg"></i>
+            <i style="--l:24%; --b:42%; --r:-7deg"></i>
+            <i style="--l:52%; --b:44%; --r:15deg"></i>
+          </span>
+        </span>
+      </button>
+
+      <div class="reason" id="reasonCard" aria-live="polite">
+        <p class="reason__label" id="reasonLabel">todavía ninguna</p>
+        <p class="reason__text" id="reasonText">Toca el frasco para sacar la primera.</p>
+        <p class="reason__count" id="reasonCount"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- 8. Rasca y gana ---------- -->
+  <section class="scratch-section">
+
+    <header class="sec-head">
+      <p class="eyebrow">una sorpresa</p>
+      <h2 class="section-title section-title--sub">Raspa aquí</h2>
+      <p class="sec-head__note">con el dedo, como una raspadita de verdad</p>
+    </header>
+
+    <div class="scratch" id="scratch">
+
+      <!-- LO QUE ESTÁ ESCONDIDO — cámbialo por lo que quieras regalarle -->
+      <div class="scratch__prize">
+        <svg class="scratch__bow" viewBox="0 0 120 56" aria-hidden="true"><use href="#bowMini"></use></svg>
+        <p class="scratch__small">esto vale por</p>
+        <p class="scratch__big">Una cita sorpresa</p>
+        <p class="scratch__fine">El día que tú digas. Yo me encargo de todo.</p>
+      </div>
+
+      <canvas class="scratch__cover" id="scratchCover"></canvas>
+    </div>
+
+    <button class="scratch__again" id="scratchAgain" type="button" hidden>
+      Volver a taparlo
+    </button>
+
+  </section>
+
+  <!-- ---------- 9. Cielo de recuerdos ---------- -->
+  <section class="sky">
+
+    <div class="sky__inner">
+
+      <header class="sec-head">
+        <p class="eyebrow">nuestro cielo</p>
+        <h2 class="section-title section-title--sub">Cada estrella, un momento</h2>
+        <p class="sec-head__note">toca una para verlo</p>
+      </header>
+
+      <!--
+        LOS RECUERDOS van en los data- de cada estrella: fecha, título y texto.
+        Puedes moverlas cambiando --x y --y (porcentajes dentro del cielo).
+        Si agregas o quitas estrellas, ajusta también los puntos del polyline.
+      -->
+      <div class="sky__field" role="group" aria-label="Estrellas con recuerdos">
+
+        <svg class="sky__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="11,30 27,64 43,26 58,70 74,32 89,58"
+                    vector-effect="non-scaling-stroke"></polyline>
+        </svg>
+
+        <span class="twinkle" style="--x:20%; --y:12%; --s:9px;  --tc:#FFF1DC; --t:4.4s; --d:0s"></span>
+        <span class="twinkle" style="--x:66%; --y:16%; --s:7px;  --tc:#FFE9F1; --t:3.6s; --d:-1.4s"></span>
+        <span class="twinkle" style="--x:36%; --y:86%; --s:8px;  --tc:#FFF1DC; --t:5s;   --d:-2.6s"></span>
+        <span class="twinkle" style="--x:82%; --y:82%; --s:6px;  --tc:#FFE9F1; --t:4s;   --d:-.8s"></span>
+        <span class="twinkle" style="--x:50%; --y:44%; --s:6px;  --tc:#FFF1DC; --t:4.8s; --d:-3.2s"></span>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:11%; --y:30%"
+                data-fecha="Julio 2026" data-titulo="El primer mensaje"
+                data-texto="Lo escribí sin eseperar una respuesta, paso un año y recien me hablaste">
+          <span></span>
+        </button>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:27%; --y:64%"
+                data-fecha="Julio 2026" data-titulo="La primera tarde"
+                data-texto="Se nos fue el día entero hablando y ninguno de los dos se dio cuenta.">
+          <span></span>
+        </button>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:43%; --y:26%"
+                data-fecha="Agosto 2026" data-titulo="Nos perdimos"
+                data-texto="Fuimos a la feria y ni sabiamos donde andabamos, pero estabamos juntos y eso era lo importante.">
+          <span></span>
+        </button>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:58%; --y:70%"
+                data-fecha="Agosto 2026" data-titulo="Esa canción"
+                data-texto="Ahora no la puedo escuchar sin pensar en ti. Ya me rendí con eso.">
+          <span></span>
+        </button>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:74%; --y:32%"
+                data-fecha="Agosto 2026" data-titulo="La noche de la lluvia"
+                data-texto="Nos quedamos escuchando la lluvia caer sin decir nada y no hizo falta nada más.">
+          <span></span>
+        </button>
+
+        <button class="star" type="button" aria-pressed="false" style="--x:89%; --y:58%"
+                data-fecha="Septiembre 2026" data-titulo="Dos meses"
+                data-texto="Hoy. Y esta página, que llevo días armando a escondidas para llegar hasta aquí.">
+          <span></span>
+        </button>
+
+      </div>
+
+      <div class="sky__note" id="skyNote" aria-live="polite">
+        <p class="sky__date" id="skyDate"></p>
+        <h3 class="sky__title" id="skyTitle">Toca una estrella</h3>
+        <p class="sky__text" id="skyText">Cada una guarda un momento nuestro.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== CONFETI ===================== -->
+<canvas class="fx" id="confetti" aria-hidden="true" hidden></canvas>
+<canvas class="fx" id="heartRain" aria-hidden="true" hidden></canvas>
+
+<!-- ===================== MODAL DE LA CARTA ===================== -->
+<div class="modal" id="letterModal" hidden>
+  <div class="modal__veil" id="modalVeil"></div>
+
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+    <button class="modal__close" id="modalClose" type="button" aria-label="Cerrar la carta">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.6 6.6 L17.4 17.4 M17.4 6.6 L6.6 17.4"></path>
+      </svg>
+    </button>
+
+    <div class="modal__scroll">
+      <article class="sheet">
+
+        <svg class="sheet__bow" viewBox="0 0 120 88" aria-hidden="true">
+          <use href="#bow"></use>
+        </svg>
+
+        <p class="sheet__date">Septiembre de 2026</p>
+        <h2 class="sheet__title" id="modalTitle">Para Fernanda</h2>
+
+        <!-- CARTA DE PRUEBA — escribe aquí la tuya -->
+        <div class="sheet__body">
+          <p>
+            Hola, mi amor. Cómo pasa el tiempo, ¿no? Ni cuenta nos dimos y ya son dos meses juntos, mi amor. La mejor decisión que he tomado en mucho tiempo fue pedirte que fueras mi pareja; desde ese momento, todo ha sido muchísimo más bonito, mi vida. Desde solo pasar una tarde hablando o mirando una peli, hasta salir a la mierda sin saber a dónde llegaremos, de estar en llamas a dormir juntos. ¿A qué quiero llegar, amor? Que hasta lo más mínimo se vuelve un recuerdo inolvidable si es junto a ti. Todo esto que hemos vivido lo valoro demasiado, no lo cambiaría por nada, incluso con los altos y bajos, amor.
+          </p>
+          <p>
+           Estoy feliz a tu lado, amor, me encantas y mucho. Quiero que pasemos muchos, muchos más meses juntos. Solo con un mensajito tuyo me alegras el día, iluminas hasta mi día más oscuro. Cuando no sé qué más hacer, siempre apareces al final del camino guiándome y ayudándome a salir del pozo más hondo. Eres mi rayito de luz, amor, mirarte a los ojos me da una paz que no puedo describir con palabras.
+Te quiero, amor, muchísimo. Agradezco cada día que paso contigo. Ahora incluso hasta jugamos juntos, mi amor, de verdad que gracias por sumarte a lo que más me gusta. Te quiero, amor, y espero el día que tengamos que decirnos: “ten linda tarde y ten cuidado de vuelta a la casa”. Sueño con eso, amor, llegar muy lejos juntos.
+Sé que esto no es mucho, pero dame tiempo que te daré todo lo que mereces, amor. Te quiero muchísimo.
+          </p>
+        </div>
+
+        <p class="sheet__sign">Te quiero,</p>
+        <p class="sheet__name">Hanyer</p>
+
+      </article>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+<script src="app.js"></script>
+</body>
+</html>
